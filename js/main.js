@@ -49,6 +49,16 @@ function initScrollReveal() {
   targets.forEach((el) => observer.observe(el));
 }
 
+/** Fade the nav to a translucent background once the page is scrolled. */
+function initNavTransparency() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  const update = () => nav.classList.toggle('nav--scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
 /** Expand/collapse the resume download panel next to the "Hire me" button. */
 function initResumePanel() {
   const toggle = document.getElementById('resumeToggle');
@@ -65,4 +75,5 @@ function initResumePanel() {
 
 applyHeroPhoto();
 initScrollReveal();
+initNavTransparency();
 initResumePanel();
