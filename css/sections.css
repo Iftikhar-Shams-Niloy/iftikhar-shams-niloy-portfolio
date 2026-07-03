@@ -70,6 +70,45 @@
   justify-content: center;
 }
 
+/* On desktop these wrappers don't exist layout-wise: the portrait pieces and
+   the floating cards position themselves against the stage directly. */
+.hero__portrait,
+.hero__cards {
+  display: contents;
+}
+
+/* Mobile hero: the portrait becomes its own block and the floating cards
+   drop into a glass-card grid underneath it (card styles in components.css). */
+@media (max-width: 900px) {
+  .hero__stage {
+    display: block;
+    height: auto;
+  }
+
+  .hero__portrait {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: min(440px, 118vw);
+    /* Clips the portrait's cropped bottom edge, which the next section
+       covers on desktop. */
+    overflow: clip;
+  }
+
+  .hero__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  /* The next card overlaps the hero bottom; keep clearance under the grid. */
+  .hero__inner {
+    padding-bottom: 96px;
+  }
+}
+
 .hero__circle,
 .hero__ring,
 .hero__orbit {
@@ -215,6 +254,55 @@
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Mobile connector: a vertical track with a spark falling along it,
+   threading root node -> first card -> second card. */
+.chart__vline {
+  display: none;
+  position: relative;
+  width: 2.5px;
+  height: 54px;
+  margin: 2px auto;
+  border-radius: 2px;
+  background: rgba(220, 61, 36, 0.3);
+}
+
+.chart__vline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 2px rgba(220, 61, 36, 0.55);
+  animation: sparkFall 1.6s linear infinite;
+}
+
+@keyframes sparkFall {
+  0%   { top: -5px; opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { top: calc(100% - 4px); opacity: 0; }
+}
+
+/* Stacked layout: swap the branching SVG for the vertical connectors. */
+@media (max-width: 760px) {
+  .chart__connector { display: none; }
+  .chart__vline { display: block; }
+
+  .chart__paths {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .path-card {
+    width: 100%;
+    max-width: 420px;
+  }
 }
 
 /* ---------------------------- Work sections ---------------------------- */

@@ -29,8 +29,8 @@
     </a>
 
     <div class="nav__group">
-      <a href="https://www.linkedin.com/in/iftikhar-shams-niloy-92b902220/" target="_blank" rel="noopener" class="nav__link">LinkedIn</a>
-      <a href="https://github.com/Iftikhar-Shams-Niloy" target="_blank" rel="noopener" class="nav__link">GitHub</a>
+      <a href="https://www.linkedin.com/in/iftikhar-shams-niloy-92b902220/" target="_blank" rel="noopener" class="nav__link nav__link--social">LinkedIn</a>
+      <a href="https://github.com/Iftikhar-Shams-Niloy" target="_blank" rel="noopener" class="nav__link nav__link--social">GitHub</a>
       <a href="#contact" class="nav__cta">Contact</a>
     </div>
   </nav>
@@ -45,7 +45,11 @@
       <h1 class="hero__title reveal">I'm Iftikhar Shams <span class="accent">Niloy</span></h1>
       <p class="hero__subtitle reveal">Mobile App Developer <span class="accent">&amp;</span> AI Engineer</p>
 
+      <!-- On desktop, .hero__portrait and .hero__cards are transparent wrappers
+           (display: contents); on mobile the portrait becomes its own block and
+           the floating cards reflow into a grid below it. -->
       <div class="hero__stage reveal">
+        <div class="hero__portrait">
         <div class="hero__circle"></div>
         <div class="hero__ring"></div>
 
@@ -63,7 +67,23 @@
 
         <img id="heroPhoto" class="hero__photo" src="assets/images/photo-formal.png" alt="Iftikhar Shams Niloy">
 
+        <!-- CTA pill + expandable resume downloads -->
+        <div class="hero__cta">
+          <div class="cta-pill">
+            <a href="#mobile" class="cta-pill__primary">Portfolio <span aria-hidden="true">↗</span></a>
+            <button id="resumeToggle" class="cta-pill__secondary" aria-expanded="false" aria-controls="resumePanel">
+              Hire me <span id="resumeCaret" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div id="resumePanel" class="resume-panel">
+            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-AI.pdf" download="Iftikhar-Shams-Niloy-AI-Resume.pdf" class="resume-panel__link resume-panel__link--accent">AI Engineering Resume</a>
+            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-Mobile.pdf" download="Iftikhar-Shams-Niloy-Mobile-Resume.pdf" class="resume-panel__link resume-panel__link--dark">Mobile App Developer Resume</a>
+          </div>
+        </div>
+        </div><!-- /hero__portrait -->
+
         <!-- Floating glass cards around the portrait -->
+        <div class="hero__cards">
         <div class="float-card float-card--quote float-card--bottom-left">
           <div class="float-card__quote-mark">&ldquo;</div>
           <p class="float-card__text">Building fast, reliable mobile apps — now teaching them to think with on-device AI.</p>
@@ -89,20 +109,7 @@
             <li><span class="float-card__bullet"></span>English: C1 Advanced (IELTS 7.5 Overall)</li>
           </ul>
         </div>
-
-        <!-- CTA pill + expandable resume downloads -->
-        <div class="hero__cta">
-          <div class="cta-pill">
-            <a href="#mobile" class="cta-pill__primary">Portfolio <span aria-hidden="true">↗</span></a>
-            <button id="resumeToggle" class="cta-pill__secondary" aria-expanded="false" aria-controls="resumePanel">
-              Hire me <span id="resumeCaret" aria-hidden="true">↗</span>
-            </button>
-          </div>
-          <div id="resumePanel" class="resume-panel">
-            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-AI.pdf" download="Iftikhar-Shams-Niloy-AI-Resume.pdf" class="resume-panel__link resume-panel__link--accent">AI Engineering Resume</a>
-            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-Mobile.pdf" download="Iftikhar-Shams-Niloy-Mobile-Resume.pdf" class="resume-panel__link resume-panel__link--dark">Mobile App Developer Resume</a>
-          </div>
-        </div>
+        </div><!-- /hero__cards -->
       </div>
     </div>
   </section>
@@ -115,6 +122,9 @@
         <div class="chart__question">Select an Area of Expertise</div>
         <div class="chart__hint">Pick a path — it scrolls you straight to the work.</div>
       </div>
+
+      <!-- Mobile connector: vertical line with a falling spark (hidden on desktop) -->
+      <div class="chart__vline" aria-hidden="true"></div>
 
       <!-- Connector with flowing sparks from the root node to the two paths -->
       <svg class="chart__connector" viewBox="0 0 900 110" height="110" fill="none" preserveAspectRatio="none" aria-hidden="true">
@@ -148,6 +158,9 @@
           <div class="path-card__title">Mobile App Development</div>
           <p class="path-card__desc">Cross-platform apps in Flutter, native Android in Java &amp; Kotlin and Swift for bridging native iOS features.</p>
         </a>
+
+        <!-- Mobile connector between the two stacked cards (hidden on desktop) -->
+        <div class="chart__vline" aria-hidden="true"></div>
 
         <a href="#ai" class="path-card reveal reveal--from-right">
           <div class="path-card__top">

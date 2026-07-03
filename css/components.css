@@ -95,6 +95,27 @@
   border-radius: 999px;
 }
 
+/* Compact nav: the logo moves to the front, the wordmark and the social
+   links drop out (both are repeated in the contact section), and paddings
+   shrink so [IN] Home About Work [Contact] fits a phone screen. */
+@media (max-width: 820px) {
+  .nav {
+    top: 12px;
+    margin-top: 12px;
+    padding: 7px 8px;
+  }
+
+  .nav__brand { order: -1; }
+  .nav__name,
+  .nav__link--social { display: none; }
+
+  .nav__link { padding: 9px 11px; font-size: 13px; }
+  .nav__link--active { padding: 9px 15px; }
+  .nav__cta { padding: 9px 15px; font-size: 13px; }
+
+  .nav__logo { border-radius: 50%; }
+}
+
 /* --------------------------- Floating glass cards --------------------------- */
 
 .float-card {
@@ -186,11 +207,25 @@
   margin-top: 5px;
 }
 
-/* The pinned cards need room around the portrait; hide them when narrow. */
+/* On narrow screens there is no room to pin the cards around the portrait,
+   so they drop out of the stage into the .hero__cards grid below it
+   (see sections.css): quotes span the full row, badges share one. */
 @media (max-width: 900px) {
   .float-card {
-    display: none;
+    position: static;
+    max-width: none;
+    animation: none;
+    padding: 16px 18px;
   }
+
+  .float-card--quote { grid-column: 1 / -1; }
+
+  .float-card--top-right { width: auto; }
+
+  .float-card--bottom-right { text-align: left; }
+  .float-card--bottom-right .float-card__stars { justify-content: flex-start; }
+
+  .float-card__headline { font-size: 26px; }
 }
 
 /* ------------------------- CTA pill + resume panel ------------------------- */
@@ -208,6 +243,13 @@
   gap: 10px;
   width: max-content;
   max-width: 90vw;
+}
+
+/* On mobile the pill sits nearer the portrait's bottom edge. */
+@media (max-width: 900px) {
+  .hero__cta {
+    bottom: 10px;
+  }
 }
 
 .cta-pill,
@@ -289,6 +331,32 @@
 
 .resume-panel__link--accent { background: var(--accent); }
 .resume-panel__link--dark   { background: var(--ink); }
+
+/* On phones the two resume buttons don't fit side by side: the panel wraps
+   below the CTA pill, stacks its links, and animates height instead of width. */
+@media (max-width: 640px) {
+  .resume-panel {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 28px;
+    width: 100%;
+    max-width: none;
+    max-height: 0;
+    transition:
+      max-height .42s cubic-bezier(.4, 0, .2, 1),
+      opacity .26s ease .34s,
+      visibility 0s .66s;
+  }
+
+  .resume-panel.is-open {
+    max-width: none;
+    max-height: 160px;
+    transition:
+      max-height .48s cubic-bezier(.16, .72, .2, 1) .16s,
+      opacity .3s ease,
+      visibility 0s;
+  }
+}
 
 /* ------------------------ Expertise path cards ------------------------ */
 

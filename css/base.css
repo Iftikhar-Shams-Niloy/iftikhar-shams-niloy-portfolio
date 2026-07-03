@@ -21,6 +21,15 @@
   --font-body: 'Manrope', system-ui, sans-serif;
 }
 
+/* Tighter card stacking and softer corners on small screens. */
+@media (max-width: 760px) {
+  :root {
+    --card-underlap: 60px;
+    --card-overlap: 20px;
+    --radius-section: 32px;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
