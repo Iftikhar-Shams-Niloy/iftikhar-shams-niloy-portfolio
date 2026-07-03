@@ -1,0 +1,560 @@
+/* ==========================================================================
+   Page sections: hero, expertise chart, work (mobile/AI), about, contact
+   Sections after the hero are ".stack-card"s (see base.css): rounded cards
+   that slide over the previous section, z-index rising in source order.
+   ========================================================================== */
+
+/* --------------------------------- Hero --------------------------------- */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: var(--paper);
+  border-radius: 0 0 var(--radius-section) var(--radius-section);
+  text-align: center;
+}
+
+.hero__inner {
+  width: min(1180px, 94vw);
+  margin: 0 auto;
+  padding: 44px 0 52px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid rgba(35, 43, 43, 0.08);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 10px 26px -18px rgba(35, 43, 43, 0.5);
+}
+
+.hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 2px rgba(220, 61, 36, 0.75);
+  animation: glowDot 1.8s ease-in-out infinite;
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(38px, 6.4vw, 88px);
+  line-height: .98;
+  letter-spacing: -.02em;
+  margin: 20px 0 0;
+}
+
+.hero__subtitle {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(17px, 2.4vw, 30px);
+  color: var(--text-muted);
+  margin-top: 14px;
+}
+
+/* The stage holds the portrait, orbit decoration, and floating cards. */
+.hero__stage {
+  position: relative;
+  margin-top: 30px;
+  height: clamp(400px, 52vw, 600px);
+  display: flex;
+  justify-content: center;
+}
+
+/* On desktop these wrappers don't exist layout-wise: the portrait pieces and
+   the floating cards position themselves against the stage directly. */
+.hero__portrait,
+.hero__cards {
+  display: contents;
+}
+
+/* Mobile hero: the portrait becomes its own block and the floating cards
+   drop into a glass-card grid underneath it (card styles in components.css). */
+@media (max-width: 900px) {
+  .hero__stage {
+    display: block;
+    height: auto;
+  }
+
+  .hero__portrait {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: min(440px, 118vw);
+    /* Clips the portrait's cropped bottom edge, which the next section
+       covers on desktop. */
+    overflow: clip;
+  }
+
+  .hero__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  /* The next card overlaps the hero bottom; keep clearance under the grid. */
+  .hero__inner {
+    padding-bottom: 96px;
+  }
+}
+
+.hero__circle,
+.hero__ring,
+.hero__orbit {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero__circle {
+  width: clamp(340px, 44vw, 520px);
+  height: clamp(340px, 44vw, 520px);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.hero__ring,
+.hero__orbit {
+  width: clamp(360px, 46vw, 540px);
+  height: clamp(360px, 46vw, 540px);
+}
+
+.hero__ring {
+  border-radius: 50%;
+  border: 1.5px dashed rgba(35, 43, 43, 0.16);
+}
+
+.hero__orbit {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__orbit-spinner {
+  position: absolute;
+  inset: 0;
+  animation: spin 24s linear infinite;
+}
+
+/* Each arm is rotated by --angle; the satellite dot sits at its 12 o'clock. */
+.hero__orbit-arm {
+  position: absolute;
+  inset: 0;
+  transform: rotate(var(--angle));
+}
+
+.hero__satellite {
+  position: absolute;
+  top: var(--offset);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 8px 18px -6px rgba(220, 61, 36, 0.6);
+}
+
+.hero__photo {
+  position: relative;
+  z-index: 2;
+  height: 90%;
+  object-fit: contain;
+  object-position: bottom;
+  transform: translateY(64px);
+  filter: drop-shadow(0 30px 40px rgba(35, 43, 43, 0.28));
+}
+
+/* --------------------------- Expertise chart --------------------------- */
+
+.chart {
+  z-index: 2;
+  background: #fff;
+  margin-top: -72px; /* only tucks under the hero's rounded corners */
+  padding: clamp(50px, 6vw, 86px) clamp(24px, 4vw, 56px)
+           calc(clamp(48px, 6vw, 78px) + var(--card-underlap));
+  box-shadow: 0 -16px 40px -18px rgba(35, 43, 43, 0.22);
+}
+
+.chart__tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.chart__root {
+  width: min(480px, 90%);
+  text-align: center;
+  padding: 26px 30px;
+  border-radius: 24px;
+  background: rgba(35, 43, 43, 0.94);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -34px rgba(35, 43, 43, 0.9);
+  animation: pop .5s ease both;
+}
+
+.chart__eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.chart__question {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 28px);
+  color: #fff;
+  line-height: 1.2;
+}
+
+.chart__hint {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8px;
+}
+
+.chart__connector {
+  display: block;
+  width: min(760px, 92%);
+  margin: 0 0 -2px;
+  overflow: visible;
+}
+
+.chart__track {
+  stroke: rgba(220, 61, 36, 0.3);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.chart__spark {
+  fill: var(--accent);
+}
+
+.chart__paths {
+  display: flex;
+  gap: clamp(16px, 4vw, 60px);
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Mobile connector: a vertical track with a spark falling along it,
+   threading root node -> first card -> second card. */
+.chart__vline {
+  display: none;
+  position: relative;
+  width: 2.5px;
+  height: 54px;
+  margin: 2px auto;
+  border-radius: 2px;
+  background: rgba(220, 61, 36, 0.3);
+}
+
+.chart__vline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 2px rgba(220, 61, 36, 0.55);
+  animation: sparkFall 1.6s linear infinite;
+}
+
+@keyframes sparkFall {
+  0%   { top: -5px; opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { top: calc(100% - 4px); opacity: 0; }
+}
+
+/* Stacked layout: swap the branching SVG for the vertical connectors. */
+@media (max-width: 760px) {
+  .chart__connector { display: none; }
+  .chart__vline { display: block; }
+
+  .chart__paths {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .path-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+/* ---------------------------- Work sections ---------------------------- */
+
+.work {
+  padding: clamp(80px, 8vw, 112px) clamp(24px, 4vw, 56px)
+           calc(clamp(48px, 6vw, 80px) + var(--card-underlap));
+}
+
+.work--dark {
+  z-index: 3;
+  background: var(--ink);
+  color: #fff;
+  overflow: clip;
+  box-shadow: 0 -16px 44px -18px rgba(35, 43, 43, 0.3);
+}
+
+.work--light {
+  z-index: 4;
+  background: var(--paper-warm);
+  box-shadow: 0 -16px 40px -18px rgba(35, 43, 43, 0.22);
+}
+
+/* Soft red halo in the dark section's corner */
+.work__glow {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(220, 61, 36, 0.14);
+  filter: blur(10px);
+}
+
+.work__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.work__eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.work__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(30px, 4.6vw, 52px);
+  line-height: 1;
+}
+
+.work__cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  padding: 13px 24px;
+  border-radius: 999px;
+}
+
+.work__cv-btn--accent { background: var(--accent); }
+.work__cv-btn--dark   { background: var(--ink); }
+
+.work__blurb {
+  max-width: 380px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.work--dark .work__blurb  { color: rgba(255, 255, 255, 0.66); }
+.work--light .work__blurb { color: var(--text-muted); }
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------- About --------------------------------- */
+
+.about {
+  z-index: 5;
+  background: #fff;
+  padding: clamp(80px, 8vw, 112px) clamp(24px, 4vw, 56px) clamp(56px, 6vw, 84px);
+  box-shadow: 0 -16px 40px -18px rgba(35, 43, 43, 0.22);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about__portrait {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about__portrait-backdrop {
+  position: absolute;
+  bottom: 0;
+  width: 76%;
+  height: 92%;
+  border-radius: 26px;
+  background: var(--accent);
+}
+
+.about__photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 360px;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 34px rgba(35, 43, 43, 0.25));
+}
+
+.about__eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.about__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -.01em;
+}
+
+.about__body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #454e4d;
+  margin-top: 18px;
+}
+
+.about__stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* -------------------------------- Contact -------------------------------- */
+
+.contact {
+  z-index: 6;
+  background: var(--ink);
+  color: #fff;
+  /* The about section above keeps its full padding visible. */
+  margin-top: -48px;
+  padding: clamp(80px, 8vw, 112px) clamp(24px, 4vw, 56px) clamp(40px, 6vw, 64px);
+  box-shadow: 0 -16px 44px -18px rgba(35, 43, 43, 0.3);
+}
+
+.contact__intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.contact__eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.contact__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(30px, 5vw, 50px);
+  line-height: 1.02;
+}
+
+.contact__body {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+  margin-top: 16px;
+}
+
+.contact__hello {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  background: var(--accent);
+  padding: 16px 32px;
+  border-radius: 999px;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 48px auto 0;
+  max-width: 640px;
+}
+
+@media (max-width: 560px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact__footer {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
