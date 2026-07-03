@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iftikhar Shams Niloy — Mobile App Developer &amp; AI Engineer</title>
+  <meta name="description" content="Portfolio of Iftikhar Shams Niloy — Mobile App Developer (Flutter, Android) and AI Engineer (TensorFlow, computer vision).">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <nav class="nav">
+    <div class="nav__group">
+      <a href="#home" class="nav__link nav__link--active">Home</a>
+      <a href="#about" class="nav__link">About</a>
+      <a href="#mobile" class="nav__link">Work</a>
+    </div>
+
+    <a href="#home" class="nav__brand">
+      <span class="nav__logo">IN</span>
+      <span class="nav__name">NILOY</span>
+    </a>
+
+    <div class="nav__group">
+      <a href="https://www.linkedin.com/in/iftikhar-shams-niloy-92b902220/" target="_blank" rel="noopener" class="nav__link">LinkedIn</a>
+      <a href="https://github.com/Iftikhar-Shams-Niloy" target="_blank" rel="noopener" class="nav__link">GitHub</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ============================== HERO ============================== -->
+  <section id="home" class="hero">
+    <div class="hero__inner">
+      <div class="hero__badge reveal">
+        <span class="hero__badge-dot"></span>Hello there!
+      </div>
+
+      <h1 class="hero__title reveal">I'm Iftikhar Shams <span class="accent">Niloy</span></h1>
+      <p class="hero__subtitle reveal">Mobile App Developer <span class="accent">&amp;</span> AI Engineer</p>
+
+      <div class="hero__stage reveal">
+        <div class="hero__circle"></div>
+        <div class="hero__ring"></div>
+
+        <!-- Rotating red satellites orbiting the portrait -->
+        <div class="hero__orbit">
+          <div class="hero__orbit-spinner">
+            <div class="hero__orbit-arm" style="--angle: 0deg"><span class="hero__satellite" style="--size: 24px; --offset: -12px"></span></div>
+            <div class="hero__orbit-arm" style="--angle: 52deg"><span class="hero__satellite" style="--size: 13px; --offset: -8px"></span></div>
+            <div class="hero__orbit-arm" style="--angle: 114deg"><span class="hero__satellite" style="--size: 17px; --offset: -10px"></span></div>
+            <div class="hero__orbit-arm" style="--angle: 170deg"><span class="hero__satellite" style="--size: 11px; --offset: -7px"></span></div>
+            <div class="hero__orbit-arm" style="--angle: 226deg"><span class="hero__satellite" style="--size: 20px; --offset: -11px"></span></div>
+            <div class="hero__orbit-arm" style="--angle: 300deg"><span class="hero__satellite" style="--size: 14px; --offset: -8px"></span></div>
+          </div>
+        </div>
+
+        <img id="heroPhoto" class="hero__photo" src="assets/images/photo-formal.png" alt="Iftikhar Shams Niloy">
+
+        <!-- Floating glass cards around the portrait -->
+        <div class="float-card float-card--quote float-card--bottom-left">
+          <div class="float-card__quote-mark">&ldquo;</div>
+          <p class="float-card__text">Building fast, reliable mobile apps — now teaching them to think with on-device AI.</p>
+        </div>
+
+        <div class="float-card float-card--quote float-card--top-right">
+          <div class="float-card__quote-mark">&ldquo;</div>
+          <p class="float-card__text">Working as a <b>Mobile App Developer</b> in a <b>Fintech</b> company</p>
+        </div>
+
+        <div class="float-card float-card--badge float-card--bottom-right">
+          <div class="float-card__stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div class="float-card__headline">CS Grad</div>
+          <div class="float-card__caption">Builder &amp; Engineer</div>
+        </div>
+
+        <div class="float-card float-card--list float-card--top-left">
+          <div class="float-card__headline float-card__headline--small">Language Proficiency</div>
+          <ul class="float-card__list">
+            <li><span class="float-card__bullet"></span>Bangla: Native Language</li>
+            <li><span class="float-card__bullet"></span>English: C1 Advanced (IELTS 7.5 Overall)</li>
+          </ul>
+        </div>
+
+        <!-- CTA pill + expandable resume downloads -->
+        <div class="hero__cta">
+          <div class="cta-pill">
+            <a href="#mobile" class="cta-pill__primary">Portfolio <span aria-hidden="true">↗</span></a>
+            <button id="resumeToggle" class="cta-pill__secondary" aria-expanded="false" aria-controls="resumePanel">
+              Hire me <span id="resumeCaret" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div id="resumePanel" class="resume-panel">
+            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-AI.pdf" download="Iftikhar-Shams-Niloy-AI-Resume.pdf" class="resume-panel__link resume-panel__link--accent">AI Engineering Resume</a>
+            <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-Mobile.pdf" download="Iftikhar-Shams-Niloy-Mobile-Resume.pdf" class="resume-panel__link resume-panel__link--dark">Mobile App Developer Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERTISE CHART ===================== -->
+  <section class="chart stack-card stack-card--chart">
+    <div class="chart__tree">
+      <div class="chart__root reveal">
+        <div class="chart__eyebrow">Explore</div>
+        <div class="chart__question">Select an Area of Expertise</div>
+        <div class="chart__hint">Pick a path — it scrolls you straight to the work.</div>
+      </div>
+
+      <!-- Connector with flowing sparks from the root node to the two paths -->
+      <svg class="chart__connector" viewBox="0 0 900 110" height="110" fill="none" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <filter id="sparkGlow" x="-70%" y="-70%" width="240%" height="240%">
+            <feGaussianBlur stdDeviation="2.6" result="b"></feGaussianBlur>
+            <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+          </filter>
+          <path id="flowLeft" d="M450 0 L450 40 C 450 78 235 60 225 108"></path>
+          <path id="flowRight" d="M450 0 L450 40 C 450 78 665 60 675 108"></path>
+        </defs>
+        <!-- faint tracks -->
+        <path d="M450 0 V42" class="chart__track"></path>
+        <path d="M450 42 C 450 78 235 60 225 108" class="chart__track"></path>
+        <path d="M450 42 C 450 78 665 60 675 108" class="chart__track"></path>
+        <!-- flowing red sparks -->
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="0s"><mpath href="#flowLeft"></mpath></animateMotion></g>
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="-0.63s"><mpath href="#flowLeft"></mpath></animateMotion></g>
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="-1.27s"><mpath href="#flowLeft"></mpath></animateMotion></g>
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="-0.31s"><mpath href="#flowRight"></mpath></animateMotion></g>
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="-0.95s"><mpath href="#flowRight"></mpath></animateMotion></g>
+        <g filter="url(#sparkGlow)"><circle r="3.6" class="chart__spark"></circle><circle r="1.4" fill="#fff"></circle><animateMotion dur="1.9s" repeatCount="indefinite" begin="-1.58s"><mpath href="#flowRight"></mpath></animateMotion></g>
+      </svg>
+
+      <div class="chart__paths">
+        <a href="#mobile" class="path-card reveal reveal--from-left">
+          <div class="path-card__top">
+            <span class="path-card__icon"><img src="assets/images/icon-mobile-dev.png" alt=""></span>
+            <span class="path-card__arrow">↗</span>
+          </div>
+          <div class="path-card__title">Mobile App Development</div>
+          <p class="path-card__desc">Cross-platform apps in Flutter, native Android in Java &amp; Kotlin and Swift for bridging native iOS features.</p>
+        </a>
+
+        <a href="#ai" class="path-card reveal reveal--from-right">
+          <div class="path-card__top">
+            <span class="path-card__icon"><img src="assets/images/icon-ai.png" alt=""></span>
+            <span class="path-card__arrow">↗</span>
+          </div>
+          <div class="path-card__title">AI Engineering</div>
+          <p class="path-card__desc">Neural networks &amp; computer vision in Python, TensorFlow &amp; R — deployed to mobile via TFLite.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOBILE WORK ===================== -->
+  <section id="mobile" class="work work--dark stack-card roll">
+    <div class="work__glow" aria-hidden="true"></div>
+
+    <div class="work__header reveal">
+      <div>
+        <div class="work__eyebrow">01 — Mobile</div>
+        <h2 class="work__title">Mobile App <span class="accent">Development</span></h2>
+        <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-Mobile.pdf" download="Iftikhar-Shams-Niloy-Mobile-Resume.pdf" class="work__cv-btn work__cv-btn--accent"><span aria-hidden="true">⇩</span> Download Mobile CV</a>
+      </div>
+      <p class="work__blurb">Shipping cross-platform Flutter apps backed by native Android expertise — offline storage, maps, auth, and on-device ML.</p>
+    </div>
+
+    <!-- Cards rendered by js/projects.js from the mobileProjects list -->
+    <div id="mobileProjects" class="work__grid"></div>
+  </section>
+
+  <!-- ===================== AI WORK ===================== -->
+  <section id="ai" class="work work--light stack-card roll">
+    <div class="work__header reveal">
+      <div>
+        <div class="work__eyebrow">02 — Artificial Intelligence</div>
+        <h2 class="work__title">AI <span class="accent">Engineering</span></h2>
+        <a href="assets/resume/Iftikhar-Shams-Niloy-Resume-AI.pdf" download="Iftikhar-Shams-Niloy-AI-Resume.pdf" class="work__cv-btn work__cv-btn--dark"><span aria-hidden="true">⇩</span> Download AI CV</a>
+      </div>
+      <p class="work__blurb">Building neural networks and computer-vision systems — image pre-processing, augmentation, and robust detection models pushed to mobile with TensorFlow Lite.</p>
+    </div>
+
+    <!-- Cards rendered by js/projects.js from the aiProjects list -->
+    <div id="aiProjects" class="work__grid"></div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about stack-card roll">
+    <div class="about__grid">
+      <div class="about__portrait reveal reveal--from-left">
+        <div class="about__portrait-backdrop"></div>
+        <img src="assets/images/photo-casual.png" alt="Iftikhar Shams Niloy" class="about__photo">
+      </div>
+
+      <div class="reveal reveal--from-right">
+        <div class="about__eyebrow">About me</div>
+        <h2 class="about__title">Turning ideas into apps that ship — and learn.</h2>
+        <p class="about__body">I am a Computer Science graduate and Mobile App Developer dedicated to building high-performance mobile applications, currently expanding my expertise into AI engineering to craft smarter, data-driven software solutions.</p>
+        <div class="about__stats">
+          <div class="stat-card">
+            <div class="stat-card__value">6+</div>
+            <div class="stat-card__label">Shipped Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">Flutter</div>
+            <div class="stat-card__label">Primary Stack</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">TFLite</div>
+            <div class="stat-card__label">On-device AI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="contact stack-card roll">
+    <div class="contact__intro reveal">
+      <div class="contact__eyebrow"><b>CONTACT ME</b></div>
+      <h2 class="contact__title">Let's Build Something Amazing Together</h2>
+      <p class="contact__body">I'm open to <b>Mobile App Development</b> and <b>AI Engineering</b> works. Reach out — let's make something that ships fast and thinks smart.</p>
+      <a href="mailto:niloyshams21@gmail.com" class="contact__hello">Say hello <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="contact__grid reveal">
+      <a href="mailto:niloyshams21@gmail.com" class="contact-card">
+        <div class="contact-card__label">Email</div>
+        <div class="contact-card__value contact-card__value--wrap">niloyshams21@gmail.com</div>
+      </a>
+      <a href="tel:+8801992501958" class="contact-card">
+        <div class="contact-card__label">Mobile</div>
+        <div class="contact-card__value">+880 1992 501958</div>
+      </a>
+      <a href="https://www.linkedin.com/in/iftikhar-shams-niloy-92b902220/" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-card__label">LinkedIn</div>
+        <div class="contact-card__value">iftikhar-shams-niloy ↗</div>
+      </a>
+      <a href="https://github.com/Iftikhar-Shams-Niloy" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-card__label">GitHub</div>
+        <div class="contact-card__value">Iftikhar-Shams-Niloy ↗</div>
+      </a>
+    </div>
+
+    <footer class="contact__footer">
+      <span>© 2026 Iftikhar Shams Niloy</span>
+      <span>Mobile App Developer &amp; AI Engineer</span>
+    </footer>
+  </section>
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
